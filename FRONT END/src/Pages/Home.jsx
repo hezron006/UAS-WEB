@@ -38,7 +38,7 @@ export const Home = () => {
        {tasks.map((task) => (
        <section className="Tugas" key={task.id}>
         <div className="Nama">{task.Nama}</div>
-        <div  className="Date">Deadline : {task.Date} </div>
+        <div  className="Date">Tanggal : {task.Date} </div>
         <div className="btn">
         <button onClick={() => handleDelete(task.id)}>Delete</button>
         <button><Link to ="/TambahData">Tambah Tugas</Link></button>

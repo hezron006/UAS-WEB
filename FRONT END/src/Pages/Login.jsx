@@ -5,7 +5,7 @@ export const Login = () => {
     
     <>
    
-      cuy
+      halo
     </>
   )
 }

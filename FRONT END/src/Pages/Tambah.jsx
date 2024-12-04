@@ -6,7 +6,7 @@ export const Tambah = () => {
     <>
     <section className='Tambah-container'>
       <section className='TambahDataTugas'>
-        
+        tambah
 
       </section>
     </section>

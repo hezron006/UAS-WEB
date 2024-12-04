@@ -1,0 +1,18 @@
+.Tambah-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    min-height: 100vh;
+    background-color: rgb(255, 255, 255);
+
+}
+
+.TambahData {
+    width: 400px;
+    height: 580px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: 2px solid black;
+
+}

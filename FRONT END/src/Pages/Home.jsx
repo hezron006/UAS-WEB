@@ -1,52 +1,108 @@
-import "../style/Home.css"
-import { Link, } from "react-router-dom"
-import { useState, useEffect } from "react";
 import axios from "axios";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom"
+import { ButtonAdd } from "../Components/ButtonAdd"
+import { Navbar } from "../Components/Navbar";
+import { MdEdit } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
+import "../style/Home.css"
+import "../style/index.css"
 
 export const Home = () => {
 
-  const [tasks, setTasks] = useState([]); 
+  const [get, setGet] = useState([]); 
+ 
+
+  const Navigate = useNavigate()
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    
-    axios
-      .get("http://localhost:3000/post/data")
+    const token = localStorage.getItem('token'); 
+    if (!token) {
+      setShowModal(true);
+      return  
+    }
+      axios.get("http://localhost:3000/post/data", {
+        headers: {
+          Authorization: `Bearer ${token}`, 
+        },
+      })
       .then((response) => {
-        setTasks(response.data); 
+        setGet(response.data);
       })
       .catch((error) => {
-        console.error(" data:", error);
+        console.error("Error fetching data:", error);
+        
       });
-  }, []);
+    
+}, []);
 
-  const handleDelete = (id) => {
-    axios
-      .delete(`http://localhost:3000/post/delete/${id}`) 
-      .then(() => {
-        setTasks(tasks.filter((task) => task.id !== id));
-      })
-      .catch((error) => {
-        console.error("Error deleting task:", error);
-      });
-  };
+const handleLoginRedirect = () => {
+  setShowModal(false);
+  Navigate("/Login");
+};
+
+const handleDelete = (id) => {
+  axios.delete(`http://localhost:3000/post/delete/${id}`) 
+    .then(() => {
+      setGet(get.filter((get) => get.id !== id));
+    })
+    .catch((error) => {
+      console.error("Error", error);
+    });
+};
+
+
+
+
 
   return (
+    
    <>
-     <section className="Agenda">
-       <section className="Tugas-container">
-       <h4>Tugas</h4>
-       {tasks.map((task) => (
-       <section className="Tugas" key={task.id}>
-        <div className="Nama">{task.Nama}</div>
-        <div  className="Date">Tanggal : {task.Date} </div>
-        <div className="btn">
-        <button onClick={() => handleDelete(task.id)}>Delete</button>
-        <button><Link to ="/TambahData">Tambah Tugas</Link></button>
-       </div>
-       </section>
-       ))}
-       </section>
-     </section>
+   {!showModal && (
+    <>
+   <Navbar/>
+   <ButtonAdd/>
+      </>
+    )}
+
+
+     <section className="Jadwal-container">
+      {get.map((data) => {
+        
+        const formatTanggal = new Date(data.tanggal).toLocaleDateString('id-ID', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+
+        });
+
+        const formatWaktu = new Date(`2024-01-01T${data.jam}`).toLocaleTimeString('id-ID', {
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: false, // ubah ke true jika ingin format 12 jam (AM/PM)
+        }).replace('.', ':');
+        return (
+          <section className="Jadwal" key={data.id}>
+            <div className="kegiatan">{data.kegiatan}</div>
+            <div className="date-time">
+            <div className="tanggal">{formatTanggal}</div>
+            <div className="jam">{formatWaktu}</div>
+            </div>
+            <div className="edit-delete">
+              <Link to={`/edit/${data.id}`}><MdEdit /></Link>
+              <div onClick={() => handleDelete(data.id)}><MdDelete /></div>
+            </div>
+          </section>
+        );
+      })}
+    </section>
+       {showModal && (
+            <div className="modal">
+                <h3>Silahkan Masuk!</h3>
+                <button className='btn' onClick={handleLoginRedirect}>Masuk</button>
+              </div>
+       )}
    </>
   )
 }

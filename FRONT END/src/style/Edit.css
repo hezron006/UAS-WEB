@@ -1,0 +1,63 @@
+.edit-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+}
+
+.edit {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    height: 200px;
+    width: 350px;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 1px;
+
+}
+
+form .title {
+    text-align: center;
+    font-size: 0.8em;
+    margin-bottom: 1rem;
+}
+
+form .kegiatan{
+    font-size: 0.8em;
+}
+
+form .date-time {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    
+}
+
+.date-time input[type="date"] {
+  width: 120px; 
+  padding: 0.3rem; 
+  font-size: 0.8em; 
+  box-sizing: border-box; 
+}
+
+.date-time input[type="time"] {
+  width: 80px; 
+  padding: 0.3rem; 
+  font-size: 0.8em; 
+  box-sizing: border-box; 
+
+}
+form .buat{
+    
+    width: 80px;
+    background-color:transparent;
+    color: black;
+    border: none;
+    border-radius: 1px;
+    font-size: 1em;
+    
+}

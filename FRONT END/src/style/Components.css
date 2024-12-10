@@ -9,7 +9,20 @@ nav {
     border-bottom:2px solid #efefef;
     z-index: 1;
     background-color: white;
+}
 
+.TombolTambah {
+    position: fixed;
+    bottom: 2%;
+    left: 50%;
+}
+.icon {
+    width: 2rem;
+    height: 2rem;
+    background-color: black;
+    fill: white;
+    border-radius: 5px;
+    
 }
 
 .Link {
@@ -19,7 +32,6 @@ nav {
 
 .logo {
     font-family:  "Great Vibes", cursive;
-
 }
 
 

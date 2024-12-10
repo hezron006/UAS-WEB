@@ -49,7 +49,7 @@ export const Tambah = () => {
                   onChange={(e) => setTanggal(e.target.value)}/>
       <input type='time' value={jam}
                   onChange={(e) => setJam(e.target.value)}/>
-      <button className="buat" onClick={handletambah}>Tambah</button>
+      <button className="buat" onClick={handletambah}>TAMBAH</button>
       </div>            
      </form>
     </div>

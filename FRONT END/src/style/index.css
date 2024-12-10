@@ -23,13 +23,13 @@ a {
     padding: 0.4rem 1rem;
     background-color: black;
     color: white;
-    border-radius:1px ;
+    border-radius:2px ;
     border: none;
     
 }
 
 input {
-    background-color: ghostwhite;
+    background-color: whitesmoke;
     border: none;
     border-radius: 1px;
     padding: 0.3rem;

@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom"
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import '../style/Sign.css'
 
@@ -21,46 +23,37 @@ export const Register = () => {
       const data = response.data;
 
       if (data.error) {
-        alert(data.message); // Menampilkan pesan error jika username sudah terpakai
+        toast.warning(data.message, {
+          position: "top-center",
+          }); 
       } else {
-        alert(data.message); // Menampilkan pesan sukses
         Navigate('/Login');
       }
     } catch (error) {
       console.error('Error:', error.response?.data || error.message);
-      alert('Terjadi kesalahan saat registrasi.');
     }
   };
 
 
   return (
-    <>
-   <table className='SignUp'>
-    <tr>
-      <label>
-        Email<input name="email"
+  <div className='sign-container'>
+    <ToastContainer/>
+   <form className='sign'>
+   <h3 className="title">Daftar</h3>
+       <input type='email' placeholder='email'
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}/>
-      </label>
-    </tr>
-    <tr>
-      <label>
-        Username<input name="username"
+       <input type='text' placeholder='nama pengguna'
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}/>
-      </label>
-    </tr>
-    <tr>
-      <label>
-        Password<input name="password"
-                  type="password"
+   
+      <input  type="password" placeholder='kata sandi'
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}/>
-      </label>
-    </tr>
-    <button type='button' onClick={handleRegister}>Daftar</button>
+   
+    <button type='button' className='btn' onClick={handleRegister}>Daftar</button>
     
-   </table>
-    </>
+   </form>
+    </div>
   )
 }

@@ -18,9 +18,11 @@ export const Home = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('token'); 
-    if (!token) {
+    console.log("Token:", token);
+    if (!token ) {
+      localStorage.removeItem('token');
       setShowModal(true);
-      return  
+      return;
     }
       axios.get("http://localhost:3000/post/data", {
         headers: {
@@ -31,7 +33,7 @@ export const Home = () => {
         setGet(response.data);
       })
       .catch((error) => {
-        console.error("Error fetching data:", error);
+        console.error("Gagal", error);
         
       });
     
@@ -52,16 +54,17 @@ const handleDelete = (id) => {
     });
 };
 
-
-
-
-
   return (
-    
    <>
-   {!showModal && (
-    <>
-   <Navbar/>
+   {showModal && (
+        <div className="modal">
+            <div className="title">Silahkan Masuk!</div>
+            <button className='btn' onClick={handleLoginRedirect}>Masuk</button>
+          </div>
+   )}
+   {showModal || (
+     <>
+     <Navbar/>
    <ButtonAdd/>
       </>
     )}
@@ -97,12 +100,6 @@ const handleDelete = (id) => {
         );
       })}
     </section>
-       {showModal && (
-            <div className="modal">
-                <h3>Silahkan Masuk!</h3>
-                <button className='btn' onClick={handleLoginRedirect}>Masuk</button>
-              </div>
-       )}
    </>
   )
 }

@@ -10,22 +10,6 @@ export const Edit = () => {
     const { id } = useParams(); // Untuk mendapatkan id dari URL
     const navigate = useNavigate(); // Untuk navigasi ke halaman lain setelah update
   
-    // Ambil data jadwal berdasarkan ID
-    // useEffect(() => {
-    //   const fetchData = async () => {
-    //     try {
-    //       const response = await axios.get(`http://localhost:3000/post/jadwal/${id}`);
-    //       const { kegiatan, tanggal, jam } = response.data;
-    //       setKegiatan(kegiatan);
-    //       setTanggal(tanggal);
-    //       setJam(jam);
-    //     } catch (error) {
-    //       console.error("Error fetching data: ", error);
-    //     }
-    //   };
-    //   fetchData();
-    // }, [id]);
-  
     const handleSubmit = async (e) => {
       e.preventDefault();
   
@@ -34,11 +18,10 @@ export const Edit = () => {
         await axios.put(`http://localhost:3000/post/update/${id}`, updatedData, {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }, // Pastikan token valid
         });
-        alert("Data berhasil diupdate");
-        navigate("/"); // Kembali ke halaman utama setelah update
+        navigate("/"); 
       } catch (error) {
         console.error("Error updating data: ", error);
-        alert("Gagal update jadwal");
+        
       }
     };
   
@@ -53,7 +36,7 @@ export const Edit = () => {
                   onChange={(e) => setTanggal(e.target.value)}/>
       <input type='time' value={jam}
                   onChange={(e) => setJam(e.target.value)}/>
-          <button type="submit">Kirimkan</button>
+          <button type="submit" className='ubah'>UBAH</button>
           </div>
         </form>
       </div>

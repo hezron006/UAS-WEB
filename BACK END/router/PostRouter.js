@@ -18,7 +18,7 @@ const verifyToken = (req, res, next) => {
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         req.user = decoded; // Tambahkan informasi user dari token
-        next(); // Lanjutkan ke endpoint berikutnya
+        next(); 
     } catch (err) {
         return res.status(403).json({ error: 'Token tidak valid' });
     }
@@ -38,24 +38,9 @@ router.get('/data', verifyToken, async (req, res) => {
     }
 });
 
-// router.get('/jadwal/:id', async (req, res) => {
-//     const { id } = req.params;
-//     console.log('Received ID:', id);
-//     try {
-//         const { data, error } = await supabase
-//             .from('jadwal')
-//             .select('*')
-//             .eq('id', id)
-//             .single();
 
-//         if (error) {
-//             return res.status(500).json({ error: "Gagal mengambil data" });
-//         }
-//         res.json(data);
-//     } catch (error) {
-//         res.status(500).json({ error: "Terjadi kesalahan server" });
-//     }
-// });
+
+
 
 router.post('/create', verifyToken, async (req, res) => {
     const { kegiatan, tanggal , jam} = req.body;
@@ -120,10 +105,7 @@ router.post('/register', async (req, res) => {
         .eq("username", username)
         if (!error){
             if(data[0] && data[0] !=0){
-                res.json({
-                    error: true,
-                    message:"username terpakai"
-                })
+                return res.json({error: true,message:"username terpakai"})
             }else {
                 const {err} = await supabase.from('user').insert({
                     email,
@@ -141,6 +123,8 @@ router.post('/register', async (req, res) => {
         }
     } 
 })
+
+
 
 router.post("/login", async (req, res) => {
     const { username, passwords } = req.body;

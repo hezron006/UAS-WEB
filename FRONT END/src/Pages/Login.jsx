@@ -2,6 +2,8 @@ import { Link, } from "react-router-dom"
 import React, { useState } from 'react';
 import axios from "axios";
 import '../style/Sign.css'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const Login = () => {
   const [username, setUsername] = useState('');
@@ -14,22 +16,24 @@ export const Login = () => {
             passwords: password,
         });
 
-        if (response.data.Status === "Login berhasil") {
-            alert("Login berhasil");
+        if (response.data.Status) {
             localStorage.setItem('token', response.data.token); // Simpan token
             window.location.href = '/'; 
         } else {
-            alert(response.data.Error || "Login gagal");
+            toast.error(response.data.Error, {
+            position: "top-center",
+            }); 
         }
     } catch (error) {
         console.error('Error:', error.response?.data || error.message);
-        alert('Terjadi kesalahan saat login');
     }
 };
 
   return (
-    <>
-   <form className='SignIn'>
+  <div className="sign-container">
+    <ToastContainer/>
+   <form className='sign'>
+   <h3 className="title">Masuk</h3>
     
       <input 
                   placeholder="nama pengguna"
@@ -44,10 +48,13 @@ export const Login = () => {
                   onChange={(e) => setPassword(e.target.value)}/>
 
     
-    <button type='button' onClick={handleLogin}>Masuk</button>
-    <button><Link to ="/Register">Daftar</Link></button>
+    <button type='button' className="btn" onClick={handleLogin}>Masuk</button>
+    <div className="belum">
+    <div>Belum punya akun?</div>
+    <div><Link to ="/Register">Daftar</Link></div>
+    </div>
    </form>
-    </>
+    </div>
   )
 }
 

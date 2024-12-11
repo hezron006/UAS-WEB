@@ -20,7 +20,6 @@ export const Home = () => {
     const token = localStorage.getItem('token'); 
     console.log("Token:", token);
     if (!token ) {
-      localStorage.removeItem('token');
       setShowModal(true);
       return;
     }
@@ -89,7 +88,7 @@ const handleDelete = (id) => {
           <section className="Jadwal" key={data.id}>
             <div className="kegiatan">{data.kegiatan}</div>
             <div className="date-time">
-            <div className="tanggal">{formatTanggal}</div>
+            <div className="tanggal">{formatTanggal},</div>
             <div className="jam">{formatWaktu}</div>
             </div>
             <div className="edit-delete">

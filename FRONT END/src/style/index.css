@@ -11,9 +11,8 @@
 }
 
 body {
-    background: url("../img/bg.png");
-    background-size: contain;
-    background-position: top;
+    background: url("../img/bgWeb.png");
+   
     background: cover;
 }
 

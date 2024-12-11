@@ -16,7 +16,8 @@
   "main": "Server.js",
   "scripts": {
     "server": "nodemon Server.js",
-    "start": "node Server.js"
+    "start": "node Server.js",
+    "postinstall": "npm rebuild bcrypt --build-from-source"
   },
   "author": "",
   "license": "ISC",

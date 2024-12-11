@@ -1,0 +1,20 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "BACK END/Server.js",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "FRONT END/package.json",
+        "use": "@vercel/static-build"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "FRONT END/$1"
+      }
+    ]
+  }
+  

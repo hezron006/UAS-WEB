@@ -65,12 +65,12 @@ router.put('/update/:id',  async (req, res) => {
 
         if (error) {
             console.error('Gagal edit:', error);
-            return res.status.json({ error: "Gagal memperbarui jadwal" });
+            return res.json({ error: "Gagal memperbarui jadwal" });
         }
 
         res.json({ message: 'Jadwal berhasil diupdate' });
     } catch (err) {
-        res.status.json({ error: ' error' });
+        res.json({ error: ' error' });
     }
 });
 

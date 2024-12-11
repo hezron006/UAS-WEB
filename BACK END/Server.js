@@ -9,6 +9,4 @@ app.use(express.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use('/post', PostRouter)
 
-app.listen(3000, ()=> {
-    console.log("server jalan", 3000)
-})
+module.exports = app; 

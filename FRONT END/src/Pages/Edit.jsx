@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useParams, useNavigate } from 'react-router-dom';
+import axios from 'axios'
+import { useState } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 import '../style/Edit.css'
 
 export const Edit = () => {
-    const [kegiatan, setKegiatan] = useState("");
-    const [tanggal, setTanggal] = useState("");
-    const [jam, setJam] = useState("");
-    const { id } = useParams(); // Untuk mendapatkan id dari URL
-    const navigate = useNavigate(); // Untuk navigasi ke halaman lain setelah update
+    const [kegiatan, setKegiatan] = useState("")
+    const [tanggal, setTanggal] = useState("")
+    const [jam, setJam] = useState("")
+    const { id } = useParams() // Untuk mendapatkan id dari URL
+    const navigate = useNavigate() // Untuk navigasi ke halaman lain setelah update
   
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -20,7 +20,7 @@ export const Edit = () => {
         });
         navigate("/"); 
       } catch (error) {
-        console.error("Error updating data: ", error);
+        console.error("Error updating data: ", error)
         
       }
     };
@@ -36,7 +36,7 @@ export const Edit = () => {
                   onChange={(e) => setTanggal(e.target.value)}/>
       <input type='time' value={jam}
                   onChange={(e) => setJam(e.target.value)}/>
-          <button type="submit" className='ubah'>UBAH</button>
+          <button type="submit" className='edititem'>UBAH</button>
           </div>
         </form>
       </div>

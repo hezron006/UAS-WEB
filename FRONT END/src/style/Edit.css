@@ -51,7 +51,7 @@ form .date-time {
   box-sizing: border-box; 
 
 }
-form .ubah{
+form .edititem{
     
     width: 80px;
     background-color:transparent;
@@ -61,3 +61,24 @@ form .ubah{
     font-size: 1em;
     
 }
+
+.edititem:hover {
+    color: green;
+    scale: 1.02;
+
+}
+
+@keyframes slideUp {
+    from {
+      transform: translateY(10%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .edit {
+    animation: slideUp 0.7s ease-out;
+  }

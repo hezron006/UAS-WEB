@@ -51,7 +51,7 @@ form .date-time {
   box-sizing: border-box; 
 
 }
-form .buat{
+form .additem{
     
     width: 80px;
     background-color:transparent;
@@ -61,6 +61,26 @@ form .buat{
     font-size: 1em;
     
 }
+
+.additem:hover {
+    color: green;
+    scale: 1.02;
+}
+
+@keyframes slideUp {
+    from {
+      transform: translateY(10%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .add {
+    animation: slideUp 0.7s ease-out;
+  }
 
 
 

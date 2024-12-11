@@ -11,9 +11,10 @@
 }
 
 body {
-    background: url("../img/bgWeb.png");
-   
-    background: cover;
+    background: url("../img/bg.jpg");
+    background-repeat: repeat;
+    background-size: cover;
+    
 }
 
 a {
@@ -37,7 +38,9 @@ input {
     padding: 0.3rem;
 }
 
-.btn button a {
-    color: white;
-    
+
+
+button {
+    cursor: pointer;
 }
+

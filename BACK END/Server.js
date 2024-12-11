@@ -9,4 +9,8 @@ app.use(express.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use('/post', PostRouter)
 
-module.exports = app; 
+const port = process.env.PORT || 3000;
+
+app.listen(port, ()=> {
+    console.log("server jalan", port)
+})

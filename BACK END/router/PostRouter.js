@@ -12,7 +12,7 @@ const verifyToken = (req, res, next) => {
     const token = req.headers.authorization?.split(' ')[1]; // Ambil token dari header Authorization
 
     if (!token) {
-        return res.status(401).json({ error: 'Akses ditolak, token tidak tersedia' });
+        return res.json({ error: 'Akses ditolak, token tidak tersedia' });
     }
     
     try {
@@ -20,7 +20,7 @@ const verifyToken = (req, res, next) => {
         req.user = decoded; // Tambahkan informasi user dari token
         next(); 
     } catch (err) {
-        return res.status(403).json({ error: 'Token tidak valid' });
+        return res.json({ error: 'Token tidak valid' });
     }
 };
 
@@ -30,11 +30,11 @@ router.get('/data', verifyToken, async (req, res) => {
         const { data, error } = await supabase.from('jadwal').select('*').eq('user_id', user_id);
 
         if (error) {
-            return res.status(500).json({ error: "Gagal mengambil data" });
+            return res.status.json({ error: "Gagal mengambil data" });
         }
         return res.json(data);
     } catch (error) {
-        return res.status(500).json({ error: "Terjadi kesalahan server" });
+        return res.status.json({ error: "Terjadi kesalahan server" });
     }
 });
 
@@ -48,7 +48,7 @@ router.post('/create', verifyToken, async (req, res) => {
 
     const { error } = await supabase.from('jadwal').insert({ kegiatan,tanggal, jam, user_id });
     if (error) {
-        return res.status(500).json({ error: "Gagal menambah tugas" });
+        return res.status.json({ error: "Gagal menambah tugas" });
     }
     return res.json({ message: "Tugas berhasil ditambahkan" });
 });
@@ -64,14 +64,13 @@ router.put('/update/:id',  async (req, res) => {
             .eq('id', id);
 
         if (error) {
-            console.error('Error updating:', error);
-            return res.status(500).json({ error: "Gagal memperbarui jadwal" });
+            console.error('Gagal edit:', error);
+            return res.status.json({ error: "Gagal memperbarui jadwal" });
         }
 
         res.json({ message: 'Jadwal berhasil diupdate' });
     } catch (err) {
-        console.error("Unexpected error:", err);
-        res.status(500).json({ error: 'Unexpected server error' });
+        res.status.json({ error: ' error' });
     }
 });
 
@@ -89,7 +88,7 @@ router.delete('/delete/:id',  async (req, res) => {
     
         res.json({ message: 'berhasil',});
     } catch (err) {
-        res.json({ error: 'Unexpected server error' });
+        res.json({ error: 'Error' });
     }
 });
 

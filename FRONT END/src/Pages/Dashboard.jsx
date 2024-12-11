@@ -1,14 +1,14 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom"
-import { ButtonAdd } from "../Components/ButtonAdd"
+import { TombolTambah } from "../Components/TombolTambah";
 import { Navbar } from "../Components/Navbar";
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
-import "../style/Home.css"
+import "../style/Dashboard.css"
 import "../style/index.css"
 
-export const Home = () => {
+export const Dashboard = () => {
 
   const [get, setGet] = useState([]); 
  
@@ -56,7 +56,7 @@ const handleDelete = (id) => {
   return (
    <>
    {showModal && (
-        <div className="modal">
+        <div className="modal-Masuk">
             <div className="title">Silahkan Masuk!</div>
             <button className='btn' onClick={handleLoginRedirect}>Masuk</button>
           </div>
@@ -64,7 +64,7 @@ const handleDelete = (id) => {
    {showModal || (
      <>
      <Navbar/>
-   <ButtonAdd/>
+   <TombolTambah/>
       </>
     )}
 
@@ -92,8 +92,8 @@ const handleDelete = (id) => {
             <div className="jam">{formatWaktu}</div>
             </div>
             <div className="edit-delete">
-              <Link to={`/edit/${data.id}`}><MdEdit /></Link>
-              <div onClick={() => handleDelete(data.id)}><MdDelete /></div>
+              <Link className="Edit" to={`/edit/${data.id}`}><MdEdit /></Link>
+              <div className="delete" onClick={() => handleDelete(data.id)}><MdDelete /></div>
             </div>
           </section>
         );

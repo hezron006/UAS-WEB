@@ -1,8 +1,8 @@
 import axios from "axios"
-import "../style/Tambah.css"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { useEffect } from "react"
+import "../style/Tambah.css"
+
 
 export const Tambah = () => {
   const [kegiatan,setKegiatan] = useState('')
@@ -26,7 +26,7 @@ export const Tambah = () => {
                 Authorization: `Bearer ${token}`, // Kirim token di header Authorization
             },
         });
-        Navigate('/'); 
+        Navigate('/')
     } catch (error) {
       console.log('error')
         console.error("Error:", error);
@@ -49,7 +49,7 @@ export const Tambah = () => {
                   onChange={(e) => setTanggal(e.target.value)}/>
       <input type='time' value={jam}
                   onChange={(e) => setJam(e.target.value)}/>
-      <button className="buat" onClick={handletambah}>TAMBAH</button>
+      <button className="additem" onClick={handletambah}>TAMBAH</button>
       </div>            
      </form>
     </div>

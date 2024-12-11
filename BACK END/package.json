@@ -15,7 +15,8 @@
   "version": "1.0.0",
   "main": "Server.js",
   "scripts": {
-    "server": "nodemon Server.js"
+    "server": "nodemon Server.js",
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",

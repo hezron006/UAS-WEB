@@ -34,7 +34,7 @@ router.get('/data', verifyToken, async (req, res) => {
         }
         return res.json(data);
     } catch (error) {
-        return res.status.json({ error: "Terjadi kesalahan server" });
+        return res.json({ error: "Terjadi kesalahan server" });
     }
 });
 
@@ -48,7 +48,7 @@ router.post('/create', verifyToken, async (req, res) => {
 
     const { error } = await supabase.from('jadwal').insert({ kegiatan,tanggal, jam, user_id });
     if (error) {
-        return res.status.json({ error: "Gagal menambah tugas" });
+        return res.json({ error: "Gagal menambah tugas" });
     }
     return res.json({ message: "Tugas berhasil ditambahkan" });
 });

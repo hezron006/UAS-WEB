@@ -2,20 +2,25 @@ const router = require("express").Router()
 const {createClient} = require('@supabase/supabase-js')
 const bcrypt = require('bcrypt')
 require('dotenv').config()
+
 const supabase = createClient(process.env.DATABASE_URL, process.env.DATABASE_KEY )
+
+
 const jwt = require('jsonwebtoken');
 
 const verifyToken = (req, res, next) => {
     const token = req.headers.authorization?.split(' ')[1]; // Ambil token dari header Authorization
+
     if (!token) {
-        return res.json({ error: 'Akses ditolak, token tidak tersedia' });
+        return res.status(401).json({ error: 'Akses ditolak, token tidak tersedia' });
     }
+    
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         req.user = decoded; // Tambahkan informasi user dari token
         next(); 
     } catch (err) {
-        return res.json({ error: 'Token tidak valid' });
+        return res.status(403).json({ error: 'Token tidak valid' });
     }
 };
 
@@ -23,22 +28,27 @@ router.get('/data', verifyToken, async (req, res) => {
     try {
         const { user_id } = req.user;
         const { data, error } = await supabase.from('jadwal').select('*').eq('user_id', user_id);
+
         if (error) {
-            return res.json({ error: "Gagal mengambil data" });
+            return res.status(500).json({ error: "Gagal mengambil data" });
         }
         return res.json(data);
     } catch (error) {
-        return res.json({ error: "Terjadi kesalahan server" });
+        return res.status(500).json({ error: "Terjadi kesalahan server" });
     }
 });
+
+
+
 
 
 router.post('/create', verifyToken, async (req, res) => {
     const { kegiatan, tanggal , jam} = req.body;
     const { user_id } = req.user;
+
     const { error } = await supabase.from('jadwal').insert({ kegiatan,tanggal, jam, user_id });
     if (error) {
-        return res.json({ error: "Gagal menambah tugas" });
+        return res.status(500).json({ error: "Gagal menambah tugas" });
     }
     return res.json({ message: "Tugas berhasil ditambahkan" });
 });
@@ -46,38 +56,47 @@ router.post('/create', verifyToken, async (req, res) => {
 router.put('/update/:id',  async (req, res) => {
     const { id } = req.params;
     const { kegiatan, tanggal, jam } = req.body;
+
     try {
         const { error } = await supabase
             .from('jadwal')
             .update({ kegiatan, tanggal, jam })
             .eq('id', id);
+
         if (error) {
-            console.error('Gagal edit:', error);
-            return res.json({ error: "Gagal memperbarui jadwal" });
+            console.error('Error updating:', error);
+            return res.status(500).json({ error: "Gagal memperbarui jadwal" });
         }
+
         res.json({ message: 'Jadwal berhasil diupdate' });
     } catch (err) {
-        res.json({ error: ' error' });
+        console.error("Unexpected error:", err);
+        res.status(500).json({ error: 'Unexpected server error' });
     }
 });
 
 
 router.delete('/delete/:id',  async (req, res) => {
     const {id} = req.params
+
     try {
         const {error} = await supabase.from('jadwal').delete().eq('id',id);
 
         if (error) {
             console.error('tidak berhasil:', error);
+        
         }
+    
         res.json({ message: 'berhasil',});
     } catch (err) {
-        res.json({ error: 'Error' });
+        res.json({ error: 'Unexpected server error' });
     }
 });
 
+
 router.post('/register', async (req, res) => {
     const {email, username, passwords } = req.body;
+
     if (!email ||!username || !passwords ) {
         res.send('Tolong masukan data')
     } else {
@@ -98,6 +117,7 @@ router.post('/register', async (req, res) => {
                 }else {
                     console.log(data)
                     res.send({message : "Regsitrasi Berhasil"})
+
                 }
             }
         }
@@ -105,8 +125,10 @@ router.post('/register', async (req, res) => {
 })
 
 
+
 router.post("/login", async (req, res) => {
     const { username, passwords } = req.body;
+
     const { data, error } = await supabase.from('user').select('*').eq('username', username);
     if (error) {
         return res.json({ Error: "Gagal mengakses database" });
@@ -122,7 +144,7 @@ router.post("/login", async (req, res) => {
                 const token = jwt.sign(
                     { user_id: data[0].user_id, username: data[0].username },
                     process.env.JWT_SECRET,
-                    { expiresIn: '3h' } 
+                    { expiresIn: '1h' } // Token berlaku selama 1 jam
                 );
                 return res.json({ Status: "Login berhasil", token });
             } else {
@@ -134,4 +156,5 @@ router.post("/login", async (req, res) => {
     }
 });
 
-module.exports = router
+
+module.exports = router

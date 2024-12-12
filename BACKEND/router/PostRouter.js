@@ -148,10 +148,11 @@ router.post("/login", async (req, res) => {
                     { expiresIn: '1h' } 
                     
                 );
-                res.cookie('token', token, {
+                res.cookie('_vercel_live_token', token, {
                     httpOnly: true, // Hanya dapat diakses oleh HTTP, bukan JavaScript di browser
                     secure: true, // Hanya dikirim melalui HTTPS
-                    sameSite: 'None', // Mengizinkan lintas domain
+                    sameSite: 'None', 
+                    maxAge: 3600000// Mengizinkan lintas domain
                 });
                 return res.json({ Status: "Login berhasil", token });
             } else {

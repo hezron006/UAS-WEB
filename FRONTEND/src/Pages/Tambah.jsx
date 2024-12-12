@@ -49,7 +49,6 @@ export const Tambah = () => {
       </div>            
      </form>
     </div>
-    
     </>
   )
 }

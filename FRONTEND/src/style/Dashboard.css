@@ -19,8 +19,8 @@
     padding: 0 0.5rem;
     box-shadow: 0px 1px 10px rgb(180, 180, 180);
     cursor: pointer;
-    
 }
+
 .Jadwal:hover {
     scale: 1.02;
 }
@@ -45,7 +45,6 @@
 
 .Edit:hover {
     color: green;
-
 }
 
 .modal-Masuk {
@@ -72,35 +71,43 @@
   
   .Jadwal {
     animation: slideUp 0.7s ease-out;
-    
   }
 
-
-
-@media screen and (max-width: 1200px) {
+  @media screen and (min-width: 1024px) and (max-width: 1300px) {
     .Jadwal-container {
-        padding: 40px 60px;
+        padding: 50px 30px; 
+        gap: 12px;
     }
 
+    .Jadwal {
+        width: 398px;
+    }
 }
+  
 
+  @media screen and (max-width: 1024px) {
+    .Jadwal-container {
+        padding: 50px 40px;
+    }
+
+    .Jadwal {
+        font-size: 0.9em;
+        width: 306px;
+        height: 90px;
+    }
+}
 
 @media screen and (max-width: 768px) {
     .Jadwal-container {
-        padding: 20px 20px;
-        
+        justify-content: center;
     }
+
+
 }
 
 
-@media screen and (max-width: 480px) {
-    .Jadwal-container {
-        align-items: center;
-        padding: 20px 20px;
-    }
 
-    
-}
+
 
 
 

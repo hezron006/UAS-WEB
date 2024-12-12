@@ -7,13 +7,10 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
-    
 }
 
 body {
-    background: url("../img/bg.jpg");
-    background-repeat: repeat;
-    background-size: cover;  
+    background-color: whitesmoke;
 }
 
 a {
@@ -27,7 +24,6 @@ a {
     color: white;
     border-radius:2px ;
     border: none;
-    
 }
 
 input {

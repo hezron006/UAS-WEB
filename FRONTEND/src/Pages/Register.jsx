@@ -40,19 +40,10 @@ export const Register = () => {
     <ToastContainer/>
    <form className='sign'>
    <div className="title">Daftar</div>
-       <input type='email' placeholder='Email'
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}/>
-       <input type='text' placeholder='Nama pengguna'
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}/>
-   
-      <input  type="password" placeholder='Kata sandi'
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}/>
-   
-    <button type='button' className='btn' onClick={handleRegister}>Daftar</button>
-    
+       <input type='email' placeholder='Email'value={email} onChange={(e) => setEmail(e.target.value)}/>
+       <input type='text' placeholder='Nama pengguna' value={username} onChange={(e) => setUsername(e.target.value)}/>
+       <input type="password" placeholder='Kata sandi'value={password} onChange={(e) => setPassword(e.target.value)}/>
+     <button type='button' className='btn' onClick={handleRegister}>Daftar</button>
    </form>
     </div>
   )

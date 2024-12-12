@@ -3,7 +3,6 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    
 }
 
 .add {
@@ -16,7 +15,6 @@
     padding: 2rem;
     background-color: white;
     border-radius: 1px;
-
 }
 
 form .title {
@@ -34,7 +32,6 @@ form .date-time {
     justify-content: space-between;
     align-items: center;
     gap: 0.5rem;
-    
 }
 
 .date-time input[type="date"] {
@@ -52,14 +49,12 @@ form .date-time {
 
 }
 form .additem{
-    
     width: 80px;
     background-color:transparent;
     color: black;
     border: none;
     border-radius: 1px;
     font-size: 1em;
-    
 }
 
 .additem:hover {

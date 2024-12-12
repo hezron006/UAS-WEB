@@ -2,10 +2,7 @@ const router = require("express").Router()
 const {createClient} = require('@supabase/supabase-js')
 const bcrypt = require('bcrypt')
 require('dotenv').config()
-
 const supabase = createClient(process.env.DATABASE_URL, process.env.DATABASE_KEY )
-
-
 const jwt = require('jsonwebtoken');
 
 const verifyToken = (req, res, next) => {
@@ -39,9 +36,6 @@ router.get('/data', verifyToken, async (req, res) => {
 });
 
 
-
-
-
 router.post('/create', verifyToken, async (req, res) => {
     const { kegiatan, tanggal , jam} = req.body;
     const { user_id } = req.user;
@@ -52,8 +46,6 @@ router.post('/create', verifyToken, async (req, res) => {
     }
     return res.json({ message: "Tugas berhasil ditambahkan" });
 });
-
-
 
 router.put('/update/:id',  async (req, res) => {
     const { id } = req.params;
@@ -94,7 +86,6 @@ router.delete('/delete/:id',  async (req, res) => {
     }
 });
 
-
 router.post('/register', async (req, res) => {
     const {email, username, passwords } = req.body;
 
@@ -124,7 +115,6 @@ router.post('/register', async (req, res) => {
         }
     } 
 })
-
 
 
 router.post("/login", async (req, res) => {

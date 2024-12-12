@@ -11,6 +11,10 @@ app.use(express.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use('/post', PostRouter)
 
+app.get('/', (req, res) => {
+    res.send("Server berjalan dengan baik!");
+  });
+
 const port = process.env.PORT
 
 app.listen(port, ()=> {

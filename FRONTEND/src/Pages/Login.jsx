@@ -14,6 +14,8 @@ export const Login = () => {
         const response = await axios.post('https://api-jadwal.vercel.app/post/login', {
             username,
             passwords: password,
+          }, {
+            withCredentials: true,
         });
         
 

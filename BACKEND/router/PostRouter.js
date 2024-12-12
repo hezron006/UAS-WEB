@@ -9,7 +9,7 @@ const supabase = createClient(process.env.DATABASE_URL, process.env.DATABASE_KEY
 const jwt = require('jsonwebtoken');
 
 const verifyToken = (req, res, next) => {
-    const token = req.headers.authorization?.split(' ')[1]; // Ambil token dari header Authorization
+    const token = req.cookies.token;// Ambil token dari header Authorization
 
     if (!token) {
         return res.status(401).json({ error: 'Akses ditolak, token tidak tersedia' });

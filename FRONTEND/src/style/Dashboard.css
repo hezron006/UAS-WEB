@@ -73,17 +73,6 @@
     animation: slideUp 0.7s ease-out;
   }
 
-  @media screen and (min-width: 1024px) and (max-width: 1300px) {
-    .Jadwal-container {
-        padding: 50px 30px; 
-        gap: 12px;
-    }
-
-    .Jadwal {
-        width: 398px;
-    }
-}
-  
 
   @media screen and (max-width: 1024px) {
     .Jadwal-container {

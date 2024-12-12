@@ -10,7 +10,7 @@ import "../style/index.css"
 
 export const Dashboard = () => {
 
-  const [get, setGet] = useState([]); 
+  const [jadwal, setJadwal] = useState([]); 
  
 
   const Navigate = useNavigate()
@@ -29,7 +29,7 @@ export const Dashboard = () => {
         },
       })
       .then((response) => {
-        setGet(response.data);
+        setJadwal(response.data);
       })
       .catch((error) => {
         console.error("Gagal", error);
@@ -46,7 +46,7 @@ const handleLoginRedirect = () => {
 const handleDelete = (id) => {
   axios.delete(`http://localhost:3000/post/delete/${id}`) 
     .then(() => {
-      setGet(get.filter((get) => get.id !== id));
+      setJadwal(jadwal.filter((data) => data.id !== id));
     })
     .catch((error) => {
       console.error("Error", error);
@@ -70,7 +70,7 @@ const handleDelete = (id) => {
 
 
      <section className="Jadwal-container">
-      {get.map((data) => {
+      {jadwal.map((data) => {
         
         const formatTanggal = new Date(data.tanggal).toLocaleDateString('id-ID', {
           year: 'numeric',

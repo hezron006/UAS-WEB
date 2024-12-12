@@ -6,7 +6,6 @@ import { Edit } from "./Pages/Edit"
 import { Dashboard } from "./Pages/Dashboard"
 const App = () => {
   return (
-      
       <Router>
       <Routes>
         <Route path='/' element = {<Dashboard/>} /> 
@@ -14,11 +13,8 @@ const App = () => {
         <Route path='/Login' element = {<Login/>} />
         <Route path='/Register' element = {<Register/>} />
         <Route path='/Edit/:id' element = {<Edit/>} />
-      
       </Routes>
       </Router>
-   
   )
 }
-
 export default App

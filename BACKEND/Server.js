@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 const PostRouter = require("./router/PostRouter")
 require('dotenv').config()
 
-
+app.get('/')
 app.use(cors())
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended: true}))

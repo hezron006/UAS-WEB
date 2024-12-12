@@ -11,7 +11,7 @@ export const Login = () => {
 
   const handleLogin = async () => {
     try {
-        const response = await axios.post('http://localhost:3000/post/login', {
+        const response = await axios.post('https://api-jadwal.vercel.app/post/login', {
             username,
             passwords: password,
         });

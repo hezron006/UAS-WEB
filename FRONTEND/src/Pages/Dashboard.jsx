@@ -20,7 +20,7 @@ export const Dashboard = () => {
       setShowModal(true);
       return;
     }
-    axios.get("http://localhost:3000/post/data", {
+    axios.get("https://api-jadwal.vercel.app/post/data", {
       headers: {
         Authorization: `Bearer ${token}`, 
       },
@@ -39,7 +39,7 @@ export const Dashboard = () => {
   };
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:3000/post/delete/${id}`)
+    axios.delete(`https://api-jadwal.vercel.app/post/delete/${id}`)
       .then(() => {
         setJadwal(jadwal.filter((data) => data.id !== id));
       })

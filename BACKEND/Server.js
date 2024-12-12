@@ -16,7 +16,8 @@ app.get('/', (req, res) => {
   });
 
 const port = process.env.PORT
+module.exports = app; 
 
-app.listen(port, ()=> {
-    console.log("server jalan", port)
-})
+// app.listen(port, ()=> {
+//     console.log("server jalan", port)
+// })

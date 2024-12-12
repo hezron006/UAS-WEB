@@ -23,7 +23,7 @@ export const Dashboard = () => {
       setShowModal(true);
       return;
     }
-      axios.get("http://localhost:3000/post/data", {
+      axios.get("http://localhost:3000/data", {
         headers: {
           Authorization: `Bearer ${token}`, 
         },
@@ -44,7 +44,7 @@ const handleLoginRedirect = () => {
 };
 
 const handleDelete = (id) => {
-  axios.delete(`http://localhost:3000/post/delete/${id}`) 
+  axios.delete(`http://localhost:3000/delete/${id}`) 
     .then(() => {
       setGet(get.filter((get) => get.id !== id));
     })
@@ -61,7 +61,7 @@ const handleDelete = (id) => {
             <button className='btn' onClick={handleLoginRedirect}>Masuk</button>
           </div>
    )}
-   {showModal || (
+   {!showModal && (
      <>
      <Navbar/>
    <TombolTambah/>

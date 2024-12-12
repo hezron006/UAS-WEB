@@ -17,7 +17,7 @@ export const Tambah = () => {
  
     const token = localStorage.getItem('token');
     try {
-        const response = await axios.post('http://localhost:3000/post/create', {
+        const response = await axios.post('http://localhost:3000/create', {
             kegiatan,
             tanggal,
             jam,

@@ -15,7 +15,7 @@ export const Edit = () => {
   
       try {
         const updatedData = { kegiatan, tanggal, jam };
-        await axios.put(`http://localhost:3000/post/update/${id}`, updatedData, {
+        await axios.put(`http://localhost:3000/update/${id}`, updatedData, {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }, // Pastikan token valid
         });
         navigate("/"); 

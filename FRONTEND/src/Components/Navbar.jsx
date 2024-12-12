@@ -1,12 +1,12 @@
-import { useNavigate } from "react-router-dom"
+
 import "../style/Components.css"
 
 export const Navbar = () => {
-  const Navigate = useNavigate('')
 
   const handleLogout = () => {
     localStorage.removeItem('token')
-    Navigate('/')
+    window.location.reload();
+  
     
 }
 

@@ -25,6 +25,8 @@ const verifyToken = (req, res, next) => {
     }
 };
 
+
+
 router.get('/data', verifyToken, async (req, res) => {
     try {
         const { user_id } = req.user;

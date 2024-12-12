@@ -19,7 +19,6 @@ export const Register = () => {
         username,
         passwords: password,
       });
-
       const data = response.data
 
       if (data.error) {
@@ -33,8 +32,6 @@ export const Register = () => {
       console.error('Error:', error.response?.data || error.message)
     }
   };
-
-
   return (
   <div className='sign-container'>
     <ToastContainer/>

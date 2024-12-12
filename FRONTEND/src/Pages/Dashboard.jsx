@@ -22,7 +22,7 @@ export const Dashboard = () => {
     }
     axios.get("http://localhost:3000/post/data", {
       headers: {
-        Authorization: `Bearer ${token}`, // Corrected syntax here
+        Authorization: `Bearer ${token}`, 
       },
     })
     .then((response) => {

@@ -32,7 +32,6 @@ export const Tambah = () => {
         console.error("Error:", error);
     }
 };
-
   return (
     <>
     <div className="add-container">

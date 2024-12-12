@@ -33,21 +33,9 @@ export const Login = () => {
   <div className="sign-container">
     <ToastContainer/>
    <form className='sign'>
-   <h3 className="title">Masuk</h3>
-    
-      <input 
-                  placeholder="nama pengguna"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}/>
-    
-    
-      <input
-                  placeholder="kata sandi"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}/>
-
-    
+   <div className="title">Masuk</div>
+      <input placeholder="Nama pengguna"value={username} onChange={(e) => setUsername(e.target.value)}/>
+      <input placeholder="Kata sandi"type="password"value={password}onChange={(e) => setPassword(e.target.value)}/>
     <button type='button' className="btn" onClick={handleLogin}>Masuk</button>
     <div className="toRegister">
     <div>Belum punya akun?</div>

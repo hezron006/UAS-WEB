@@ -144,7 +144,7 @@ router.post("/login", async (req, res) => {
                 const token = jwt.sign(
                     { user_id: data[0].user_id, username: data[0].username },
                     process.env.JWT_SECRET,
-                    { expiresIn: '1h' } // Token berlaku selama 1 jam
+                    { expiresIn: '1h' } 
                 );
                 return res.json({ Status: "Login berhasil", token });
             } else {
@@ -157,4 +157,4 @@ router.post("/login", async (req, res) => {
 });
 
 
-module.exports = router
+module.exports = router

@@ -41,7 +41,7 @@ app.get('/', (req, res) => {
   });
 
 const port = process.env.PORT
-module.exports = app; 
+module.exports = app || port 
 
 // app.listen(port, ()=> {
 //     console.log("server jalan", port)

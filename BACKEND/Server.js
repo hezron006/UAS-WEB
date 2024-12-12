@@ -10,12 +10,10 @@ app.use(cookieParser());
 
   
 
-const corsOptions = {
-    origin: ['https://jadwal-lovat.vercel.app'], // Tambahkan domain frontend Anda
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Metode HTTP yang diizinkan
-    allowedHeaders: ['Content-Type', 'Authorization'], // Header yang diizinkan
-    credentials: true, // Jika menggunakan cookie
-  };
+app.use(cors({
+    origin: 'https://jadwal-lovat.vercel.app',  // Domain frontend Anda
+    credentials: true,  // Memungkinkan pengiriman kredensial (cookies)
+  }));
   
   app.use(cors(corsOptions));
   

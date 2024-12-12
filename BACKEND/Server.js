@@ -5,6 +5,8 @@ const bodyParser = require('body-parser')
 const PostRouter = require("./router/PostRouter")
 require('dotenv').config()
 
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
 
   
 

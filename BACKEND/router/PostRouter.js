@@ -145,7 +145,13 @@ router.post("/login", async (req, res) => {
                     { user_id: data[0].user_id, username: data[0].username },
                     process.env.JWT_SECRET,
                     { expiresIn: '1h' } 
+                    
                 );
+                res.cookie('token', token, {
+                    httpOnly: true, // Hanya dapat diakses oleh HTTP, bukan JavaScript di browser
+                    secure: true, // Hanya dikirim melalui HTTPS
+                    sameSite: 'None', // Mengizinkan lintas domain
+                });
                 return res.json({ Status: "Login berhasil", token });
             } else {
                 return res.json({ Error: "Password salah" });

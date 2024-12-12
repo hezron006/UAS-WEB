@@ -8,10 +8,14 @@ require('dotenv').config()
 
   
 
-app.use(cors({
-    origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  }));
+const corsOptions = {
+    origin: ['https://jadwal-lovat.vercel.app'], // Tambahkan domain frontend Anda
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Metode HTTP yang diizinkan
+    allowedHeaders: ['Content-Type', 'Authorization'], // Header yang diizinkan
+    credentials: true, // Jika menggunakan cookie
+  };
+  
+  app.use(cors(corsOptions));
   
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended: true}))

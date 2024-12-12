@@ -23,7 +23,7 @@ export const Dashboard = () => {
       setShowModal(true);
       return;
     }
-      axios.get("http://localhost:3000/data", {
+      axios.get("http://localhost:3000/post/data", {
         headers: {
           Authorization: `Bearer ${token}`, 
         },
@@ -44,7 +44,7 @@ const handleLoginRedirect = () => {
 };
 
 const handleDelete = (id) => {
-  axios.delete(`http://localhost:3000/delete/${id}`) 
+  axios.delete(`http://localhost:3000/post/delete/${id}`) 
     .then(() => {
       setGet(get.filter((get) => get.id !== id));
     })

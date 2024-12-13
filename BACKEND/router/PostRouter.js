@@ -141,7 +141,7 @@ router.post("/login", async (req, res) => {
                 res.cookie('_vercel_live_token', token, {
                     httpOnly: true, // Hanya dapat diakses oleh HTTP, bukan JavaScript di browser
                     secure: true, // Hanya dikirim melalui HTTPS
-                    sameSite: 'None', 
+                    sameSite: None, 
                     maxAge: 3600000// 
                 })
                 return res.json({ Status: "Login berhasil", token });

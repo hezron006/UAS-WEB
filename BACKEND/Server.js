@@ -11,7 +11,7 @@ require('dotenv').config()
 
 
 app.use(cors({
-  origin: ['https://jadwal-lovat.vercel.app', 'http://localhost:3000'], // Ganti dengan domain frontend Anda
+  origin: 'https://jadwal-lovat.vercel.app', // Ganti dengan domain frontend Anda
   credentials: true, // Mengizinkan pengiriman cookie dan header Authorization
 }));
 

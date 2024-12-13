@@ -20,6 +20,15 @@ app.options('*', cors({
     credentials: true,
   }));
   
+  const helmet = require('helmet');
+
+app.use(helmet.contentSecurityPolicy({
+    directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "https://vercel.live"],
+        styleSrc: ["'self'"],
+    },
+}));
   
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended: true}))

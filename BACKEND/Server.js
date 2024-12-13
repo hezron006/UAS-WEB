@@ -22,11 +22,11 @@ app.options('*', cors({
   
   const helmet = require('helmet');
 
-app.use(helmet.contentSecurityPolicy({
+  app.use(helmet.contentSecurityPolicy({
     directives: {
         defaultSrc: ["'self'"],
         scriptSrc: ["'self'", "https://vercel.live"],
-        styleSrc: ["'self'"],
+        imgSrc: ["'self'", "https://api-jadwal.vercel.app"],
     },
 }));
   

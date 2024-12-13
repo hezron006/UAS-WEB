@@ -12,8 +12,7 @@ app.use((req, res, next) => {
   res.setHeader('Content-Security-Policy', "default-src 'none'; img-src 'self' https://api-jadwal.vercel.app;");
   next(); // Melanjutkan ke middleware berikutnya
 });
-
-// Middleware untuk melayani file statis atau rute lainnya
+app.use('/favicon.ico', (req, res) => res.status(204).end());
 app.use(express.static('public'));
 
 app.use(cors({

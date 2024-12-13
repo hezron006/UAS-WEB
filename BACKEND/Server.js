@@ -24,8 +24,9 @@ app.get('/', (req, res) => {
     res.send("Server berjalan dengan baik!");
   });
 
-const port = process.env.PORT
-module.exports = app || port 
+// const port = process.env.PORT
+module.exports = app 
+
 
 // app.listen(port, ()=> {
 //     console.log("server jalan", port)

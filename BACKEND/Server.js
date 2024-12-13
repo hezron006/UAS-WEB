@@ -8,7 +8,8 @@ require('dotenv').config()
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
-SameSite=None; Secure
+
+
 
 app.use(cors({
     origin: 'https://jadwal-lovat.vercel.app',  

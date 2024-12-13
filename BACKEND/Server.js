@@ -8,7 +8,13 @@ require('dotenv').config()
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
-  
+app.use((req, res, next) => {
+  res.setHeader('Content-Security-Policy', "default-src 'none'; img-src 'self' https://api-jadwal.vercel.app;");
+  next(); // Melanjutkan ke middleware berikutnya
+});
+
+// Middleware untuk melayani file statis atau rute lainnya
+app.use(express.static('public'));
 
 app.use(cors({
     origin: 'https://jadwal-lovat.vercel.app',  

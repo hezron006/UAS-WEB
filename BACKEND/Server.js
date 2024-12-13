@@ -22,6 +22,17 @@ app.use(helmet.contentSecurityPolicy({
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
+app.use((req, res, next) => {
+  res.setHeader("Content-Security-Policy", `
+      default-src 'none'; 
+      script-src 'self' https://vercel.live; 
+      img-src 'self' https://api-jadwal.vercel.app; 
+      style-src 'self' 'unsafe-inline';
+      font-src 'self';
+  `);
+  next();
+});
+
 
 
 

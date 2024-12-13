@@ -20,15 +20,7 @@ app.options('*', cors({
     credentials: true,
   }));
   
-  const helmet = require('helmet');
 
-  app.use(helmet.contentSecurityPolicy({
-    directives: {
-        defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", "https://vercel.live"],
-        imgSrc: ["'self'", "https://api-jadwal.vercel.app"],
-    },
-}));
   
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended: true}))
@@ -39,9 +31,8 @@ app.get('/', (req, res) => {
   });
 
 const port = process.env.PORT
-module.exports = app || port
+module.exports = app 
 
-
-// app.listen(port, ()=> {
-//     console.log("server jalan", port)
-// })
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+});

@@ -138,9 +138,11 @@ router.post("/login", async (req, res) => {
                     process.env.JWT_SECRET,
                     { expiresIn: '1h' } 
                 )
-                res.cookie('cookie_name', 'value', {
-                    sameSite: 'None',
-                    secure: true, // Wajib untuk SameSite=None
+                const isProduction = process.env.NODE_ENV === 'production';
+                res.cookie('auth_token', token, {
+                    httpOnly: true, // Meningkatkan keamanan
+                    sameSite: 'None', // Untuk lintas domain
+                    secure: isProduction, 
                   });
                   
                 return res.json({ Status: "Login berhasil", token });

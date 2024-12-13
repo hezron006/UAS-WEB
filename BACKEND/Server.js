@@ -12,9 +12,14 @@ app.use(cookieParser());
 
 
 app.use(cors({
-    origin: '*',  
-    credentials: true,  
-  }));
+  origin: ['https://jadwal-lovat.vercel.app', 'http://localhost:3000'], // Ganti dengan domain frontend Anda
+  credentials: true, // Mengizinkan pengiriman cookie dan header Authorization
+}));
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Credentials', 'true');
+  next();
+});
   
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended: true}))

@@ -138,12 +138,11 @@ router.post("/login", async (req, res) => {
                     process.env.JWT_SECRET,
                     { expiresIn: '1h' } 
                 )
-                res.cookie('_vercel_live_token', token, {
-                    httpOnly: true, // Hanya dapat diakses oleh HTTP, bukan JavaScript di browser
-                    secure: true, // Hanya dikirim melalui HTTPS
-                    sameSite: None, 
-                    maxAge: 3600000// 
-                })
+                res.cookie('cookie_name', 'value', {
+                    sameSite: 'None',
+                    secure: true, // Wajib untuk SameSite=None
+                  });
+                  
                 return res.json({ Status: "Login berhasil", token });
             } else {
                 return res.json({ Error: "Password salah" });

@@ -10,10 +10,8 @@ app.use(cookieParser());
 
   
 
-app.use(cors({
-    origin: 'https://jadwal-lovat.vercel.app',  
-    credentials: true,  
-  }));
+app.use(cors())
+
   
  
   

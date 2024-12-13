@@ -15,7 +15,11 @@ app.use(cors({
     credentials: true,  
   }));
   
- 
+app.options('*', cors({
+    origin: 'https://jadwal-lovat.vercel.app',
+    credentials: true,
+  }));
+  
   
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended: true}))

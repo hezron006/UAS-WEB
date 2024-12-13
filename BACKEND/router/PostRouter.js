@@ -3,14 +3,11 @@ const {createClient} = require('@supabase/supabase-js')
 const bcrypt = require('bcryptjs')
 require('dotenv').config()
 
-
 const supabase = createClient(process.env.DATABASE_URL, process.env.DATABASE_KEY )
-
-
 const jwt = require('jsonwebtoken');
 
 const verifyToken = (req, res, next) => {
-    const token = req.cookies.token;// Ambil token dari header Authorization
+    const token = req.cookies.token;
 
     if (!token) {
         return res.status(401).json({ error: 'Akses ditolak, token tidak tersedia' });
@@ -25,8 +22,6 @@ const verifyToken = (req, res, next) => {
     }
 };
 
-
-
 router.get('/data', verifyToken, async (req, res) => {
     try {
         const { user_id } = req.user;
@@ -40,10 +35,6 @@ router.get('/data', verifyToken, async (req, res) => {
         return res.status(500).json({ error: "Terjadi kesalahan server" });
     }
 });
-
-
-
-
 
 router.post('/create', verifyToken, async (req, res) => {
     const { kegiatan, tanggal , jam} = req.body;
@@ -127,8 +118,6 @@ router.post('/register', async (req, res) => {
     } 
 })
 
-
-
 router.post("/login", async (req, res) => {
     const { username, passwords } = req.body;
 
@@ -148,14 +137,13 @@ router.post("/login", async (req, res) => {
                     { user_id: data[0].user_id, username: data[0].username },
                     process.env.JWT_SECRET,
                     { expiresIn: '1h' } 
-                    
-                );
+                )
                 res.cookie('_vercel_live_token', token, {
                     httpOnly: true, // Hanya dapat diakses oleh HTTP, bukan JavaScript di browser
                     secure: true, // Hanya dikirim melalui HTTPS
                     sameSite: 'None', 
-                    maxAge: 3600000// Mengizinkan lintas domain
-                });
+                    maxAge: 3600000// 
+                })
                 return res.json({ Status: "Login berhasil", token });
             } else {
                 return res.json({ Error: "Password salah" });

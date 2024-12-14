@@ -23,8 +23,6 @@ export const Dashboard = () => {
     axios.get("https://uas-snowy.vercel.app/post/data", {
       headers: {
         Authorization: `Bearer ${token}`, 
-          
-    
       },
       withCredentials: true,
     })
@@ -35,6 +33,8 @@ export const Dashboard = () => {
     .catch((error) => {
       console.error("Gagal:", error);
     if (error.response) {
+      setShowModal(true);
+      return;
       console.error("Error Response:", error.response.data);
       console.error("Error Status:", error.response.status);
     } else {

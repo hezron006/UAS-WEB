@@ -10,7 +10,7 @@ app.use(cookieParser());
 
 app.use((req, res, next) => {
   res.setHeader('Content-Security-Policy', "default-src 'none'; img-src 'self' https://api-jadwal.vercel.app;");
-  next(); // Melanjutkan ke middleware berikutnya
+  next(); 
 });
 app.use('/favicon.ico', (req, res) => res.status(204).end());
 app.use(express.static('public'));
@@ -24,8 +24,6 @@ app.options('*', cors({
     origin: 'https://jadwal-lovat.vercel.app',
     credentials: true,
   }));
-  
-
   
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended: true}))

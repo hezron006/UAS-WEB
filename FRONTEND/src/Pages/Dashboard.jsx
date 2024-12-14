@@ -33,8 +33,14 @@ export const Dashboard = () => {
       setJadwal(response.data);
     })
     .catch((error) => {
-      console.error("Gagal", error);
-      console.log('auth errror')
+      console.error("Gagal:", error);
+    if (error.response) {
+      console.error("Error Response:", error.response.data);
+      console.error("Error Status:", error.response.status);
+    } else {
+      console.error("No response received", error.message);
+    }
+    console.log("Auth error");
     });
   }, []);
 

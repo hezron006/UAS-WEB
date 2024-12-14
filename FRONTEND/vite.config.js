@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   proxy: {
     '/api': {
-      target: 'https://api-jadwal.vercel.app',
+      target: 'https://uas-snowy.vercel.app',
       changeOrigin: true,
       rewrite: (path) => path.replace(/^\/api/, ''),
     },

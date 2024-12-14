@@ -29,6 +29,7 @@ export const Dashboard = () => {
       withCredentials: true,
     })
     .then((response) => {
+      console.log("Response:", response); 
       setJadwal(response.data);
     })
     .catch((error) => {

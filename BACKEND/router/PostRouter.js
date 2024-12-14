@@ -22,7 +22,7 @@ const verifyToken = (req, res, next) => {
     }
 };
 
-router.get('/data', verifyToken, async (req, res) => {
+router.get('/data',  async (req, res) => {
     try {
         const { user_id } = req.user;
         const { data, error } = await supabase.from('jadwal').select('*').eq('user_id', user_id);

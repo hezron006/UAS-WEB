@@ -23,9 +23,10 @@ export const Dashboard = () => {
     axios.get("https://uas-snowy.vercel.app/post/data", {
       headers: {
         Authorization: `Bearer ${token}`, 
-          withCredentials: true,
+          
     
       },
+      withCredentials: true,
     })
     .then((response) => {
       setJadwal(response.data);

@@ -34,6 +34,7 @@ export const Dashboard = () => {
     })
     .catch((error) => {
       console.error("Gagal", error);
+      console.log('auth errror')
     });
   }, []);
 

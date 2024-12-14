@@ -31,6 +31,7 @@ export const Dashboard = () => {
       setJadwal(response.data);
     })
     .catch((error) => {
+      setShowModal(true);
       console.error("Gagal:", error);
     if (error.response) {
       setShowModal(true);

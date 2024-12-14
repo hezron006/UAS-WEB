@@ -139,7 +139,7 @@ router.post("/login", async (req, res) => {
                     { expiresIn: '1h' } 
                 )
                 const isProduction = process.env.NODE_ENV === 'production';
-                res.cookie('auth_token', token, {
+                res.cookie('__vercel_live_token', token, {
                     httpOnly: true, // Meningkatkan keamanan
                     sameSite: 'None', // Untuk lintas domain
                     secure: isProduction, 

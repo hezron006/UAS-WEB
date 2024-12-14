@@ -14,7 +14,7 @@ export const Register = () => {
 
   const handleRegister = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/post/register', {
+      const response = await axios.post('https://uas-snowy.vercel.app/post/register', {
         email,
         username,
         passwords: password,

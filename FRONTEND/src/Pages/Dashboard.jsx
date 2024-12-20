@@ -56,6 +56,7 @@ export const Dashboard = () => {
       .catch((error) => {
         console.error("Error", error);
       });
+      setPopover(false)
   };
 
   return (

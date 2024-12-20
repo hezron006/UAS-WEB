@@ -48,6 +48,7 @@ export const Dashboard = () => {
     setPopover(true)
   }
 
+
   const handleDelete = (id) => {
     axios.delete(`https://uas-snowy.vercel.app/post/delete/${id}`)
       .then(() => {
@@ -78,8 +79,8 @@ export const Dashboard = () => {
       {popover &&(
         <div className="popover">
         Yakin di hapus?
-        <button>batal</button>
-        <button onClick={() => handleDelete(data.id)}>hapus</button>
+        <button className="btn" onClick={!Popover}>batal</button>
+        <button className="btn" onClick={() => handleDelete(data.id)}>hapus</button>
        </div>
     )}
       

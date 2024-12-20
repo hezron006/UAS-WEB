@@ -79,7 +79,7 @@ export const Dashboard = () => {
         <div className="popover">
         Yakin di hapus?
         <button>batal</button>
-        <button onClick={() => handleDelete(data.id)}></button>
+        <button onClick={() => handleDelete(data.id)}>hapus</button>
        </div>
     )}
       

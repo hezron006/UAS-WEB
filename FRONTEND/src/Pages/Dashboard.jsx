@@ -83,18 +83,18 @@ export const Dashboard = () => {
 
       <section className="Jadwal-container">
         {jadwal.map((data) => {
+        {popover &&(
+          <div className="popover">
+          Yakin di hapus?
+          <button className="btn" onClick={cancel}>batal</button>
+          <button className="btn" onClick={() => handleDelete(data.id)}>hapus</button>
+         </div>
+         )}
           const formatTanggal = new Date(data.tanggal).toLocaleDateString('id-ID', {
             year: 'numeric',
             month: 'long',
             day: 'numeric',
           });
-          {popover &&(
-            <div className="popover">
-            Yakin di hapus?
-            <button className="btn" onClick={cancel}>batal</button>
-            <button className="btn" onClick={() => handleDelete(data.id)}>hapus</button>
-           </div>
-           )}
 
           const formatWaktu = new Date(`2024-01-01T${data.jam}`).toLocaleTimeString('id-ID', {
             hour: '2-digit',

@@ -9,6 +9,8 @@ import "../style/Dashboard.css";
 import "../style/index.css";
 
 export const Dashboard = () => {
+
+  const [popover, setPopover] = useState(false)
   const [jadwal, setJadwal] = useState([]);
   const Navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
@@ -31,17 +33,9 @@ export const Dashboard = () => {
       setJadwal(response.data);
     })
     .catch((error) => {
-      setShowModal(true);
       console.error("Gagal:", error);
-    if (error.response) {
       setShowModal(true);
-      return;
-      console.error("Error Response:", error.response.data);
-      console.error("Error Status:", error.response.status);
-    } else {
-      console.error("No response received", error.message);
-    }
-    console.log("Auth error");
+      
     });
   }, []);
 
@@ -49,6 +43,10 @@ export const Dashboard = () => {
     setShowModal(false);
     Navigate("/Login");
   };
+
+  const Popover = () => {
+    setPopover(true)
+  }
 
   const handleDelete = (id) => {
     axios.delete(`https://uas-snowy.vercel.app/post/delete/${id}`)
@@ -68,12 +66,22 @@ export const Dashboard = () => {
           <button className='btn' onClick={handleLoginRedirect}>Masuk</button>
         </div>
       )}
+
       {!showModal && (
         <>
           <Navbar />
           <TombolTambah />
         </>
       )}
+
+      {popover &&(
+        <div className="popover">
+        Yakin di hapus?
+        <button>batal</button>
+        <button onClick={() => handleDelete(data.id)}></button>
+       </div>
+    )}
+      
 
       <section className="Jadwal-container">
         {jadwal.map((data) => {
@@ -98,7 +106,7 @@ export const Dashboard = () => {
               </div>
               <div className="edit-delete">
                 <Link className="Edit" to={`/edit/${data.id}`}><MdEdit /></Link>
-                <div className="delete" onClick={() => handleDelete(data.id)}><MdDelete /></div>
+                <div className="delete" onClick={Popover}><MdDelete /></div>
               </div>
             </section>
           );

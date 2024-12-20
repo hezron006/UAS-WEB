@@ -47,6 +47,13 @@ nav {
     transform: translateY(-20%);
 }
 
+.popover {
+    height: 200px;
+    width: 300px;
+    background-color: white;
+    border: 2px black dotted;
+}
+
 
 
 
